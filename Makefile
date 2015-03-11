@@ -11,8 +11,6 @@ bootstrap_user:
 	usermod -aG root porta
 
 dependencies:
-	echo "--> Running apt-get update"
-	sudo apt-get update > /dev/null
 	echo "--> Installing python-pip"
 	sudo apt-get install python-pip
 	echo "--> Installing python dependencies"
