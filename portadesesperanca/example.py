@@ -14,8 +14,6 @@ def signal_handler(signal, frame):
         sys.exit(0)
 signal.signal(signal.SIGINT, signal_handler)
 print('Press Ctrl+C to stop')
-signal.pause()
-
 
 # Control a LED
 #pins = {'door': 11,
