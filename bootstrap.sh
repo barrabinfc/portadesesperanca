@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # A script to bootstrap porta da esperanca 
 # It expects to be run on Ubuntu 14.04 via 'sudo'
-# It checks out the dokku source code from Github into ~/dokku and then runs 'make install' from dokku source.
+# It checks out the porta source code from Github into ~/portadesesperanca and then runs 'make install' .
 
 set -eo pipefail
 export DEBIAN_FRONTEND=noninteractive
-export PORTA_REPO=${DOKKU_REPO:-"https://github.com/barrabinfc/portadesesperanca.git"}
+export PORTA_REPO=${PORTA_REPO:-"https://github.com/barrabinfc/portadesesperanca.git"}
 
 if ! command -v apt-get &>/dev/null
 then
