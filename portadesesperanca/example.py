@@ -22,7 +22,7 @@ pprint(omx.__dict__)
 # Door state tracking
 #door_state = 0
 #playing = False
-omg.toggle_pause()
+omx.toggle_pause()
 usleep( 100 )
 
 while 1:
