@@ -16,7 +16,8 @@ fi
 apt-get update
 apt-get install -qq -y git make curl software-properties-common man-db help2man
 
-cd ~
+cd /home/pi
+su - pi
 test -d portadesesperanca || git clone $PORTA_REPO
 cd portadesesperanca
 git fetch origin
@@ -27,7 +28,7 @@ elif [[ -n $PORTA_TAG ]]; then
   git checkout $PORTA_TAG
 fi
 
-make install
+sudo make install
 
 echo
 echo "Almost done! Now copy the movies to ~/portadesesperanca/movies/"
