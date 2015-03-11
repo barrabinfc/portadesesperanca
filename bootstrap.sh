@@ -21,10 +21,10 @@ test -d portadesesperanca || git clone $PORTA_REPO
 cd portadesesperanca
 git fetch origin
 
-if [[ -n $DOKKU_BRANCH ]]; then
-  git checkout origin/$DOKKU_BRANCH
-elif [[ -n $DOKKU_TAG ]]; then
-  git checkout $DOKKU_TAG
+if [[ -n $PORTA_BRANCH ]]; then
+  git checkout origin/$PORTA_BRANCH
+elif [[ -n $PORTA_TAG ]]; then
+  git checkout $PORTA_TAG
 fi
 
 make install
