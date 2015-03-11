@@ -26,7 +26,8 @@ print('Press Ctrl+C to stop')
 
 loop1 = OMXPlayer('/home/pi/raspberry-test.mp4', '-b -o hdmi')
 loop2 = OMXPlayer('/home/pi/earth.mp4','-b -o hdmi')
-pprint(omx.__dict__)
+pprint(loop1.__dict__)
+pprint(loop2.__dict__)
 
 loop2.toggle_pause()
 
