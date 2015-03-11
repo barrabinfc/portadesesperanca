@@ -1,10 +1,20 @@
+#!/usr/bin/env python
 from pyomxplayer import OMXPlayer
 from pprint import pprint
 
 import RPi.GPIO as GPIO
 
-import time
+import time, os
 usleep = lambda x: time.sleep(x/1000000.0)
+
+import signal
+import sys
+def signal_handler(signal, frame):
+        print('You pressed Ctrl+C!')
+        sys.exit(0)
+signal.signal(signal.SIGINT, signal_handler)
+print('Press Ctrl+C to stop')
+signal.pause()
 
 
 # Control a LED
@@ -16,23 +26,31 @@ usleep = lambda x: time.sleep(x/1000000.0)
 # Read a button
 #GPIO.setup( pins['door'], GPIO.IN)
 
-omx = OMXPlayer('/home/pi/raspberry-test.mp4', '-b -o hdmi --loop')
+loop1 = OMXPlayer('/home/pi/raspberry-test.mp4', '-b -o hdmi')
+loop2 = OMXPlayer('/home/pi/earth.mp4','-b -o hdmi')
 pprint(omx.__dict__)
+
+loop2.toggle_pause()
 
 # Door state tracking
 #door_state = 0
 #playing = False
-omx.toggle_pause()
-usleep( 100 )
 
 while 1:
-    print omx.position
-    usleep( 100 )
+    position = loop1.position/1000000 
+    position2 = loop2.position/1000000
+    print position
+    if position > 12.8:      
+        self.loop1.toggle_pause() 
+        self.loop2.toggle_pause()
 
-    if omx.position <= 0.00:
-        omx.toggle_pause()
-        omx.position = 0.0
-        omx.toggle_pause()
+        sleep(2) 
+        os.system('pkill -9 -f "/usr/bin/omxplayer.bin -s /home/pi/raspberry-test.mp4 -b -o hdmi "') 
+        os.system('pkill -9 -f "/bin/bash /usr/bin/omxplayer -s /home/pi/raspberry-test.mp4 -b -o hdmi"')
+        sleep(2)
+
+        loop1 = OMXPlayer('/home/pi/raspberry-test.mp4', '-o local', start_playback=True, do_dict=False) 
+        loop1.toggle_pause() 
 
 #    door_state = GPIO.input( pins['door'] )
 #    if door_state == 1:             # OPEN
