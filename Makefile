@@ -11,7 +11,6 @@ dependencies:
 	sudo apt-get update > /dev/null
 	echo "--> Installing python-pip"
 	sudo apt-get install python-pip
-	echo "--> Installing python package "
-	python setup.py install
-	#git clone https://github.com/jbaiter/pyomxplayer.git
-	#python pyomxplayer/setup.py install
+	echo "--> Installing python dependencies"
+	git clone https://github.com/jbaiter/pyomxplayer.git
+	python pyomxplayer/setup.py install
