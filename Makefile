@@ -6,11 +6,15 @@ all:
 install: dependencies
 	echo "installed"
 
+bootstrap_user:
+	mkdir -p /home/porta
+	usermod -aG root porta
+
 dependencies:
 	echo "--> Running apt-get update"
 	sudo apt-get update > /dev/null
 	echo "--> Installing python-pip"
 	sudo apt-get install python-pip
 	echo "--> Installing python dependencies"
-	git clone https://github.com/jbaiter/pyomxplayer.git
-	python pyomxplayer/setup.py install
+	sudo pip install -r requirements.txt
+	sudo python pyomxplayer/setup.py install

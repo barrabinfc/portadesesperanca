@@ -1,7 +1,7 @@
 import distutils.core
 
 distutils.core.setup(
-    name="portadesperanca",
-    packages = ["portadesesperanca"],
+    name="pyomxplayer",
+    packages = ["."],
     requires = ['pexpect (>= 2.4)'],
     )
