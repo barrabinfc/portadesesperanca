@@ -29,9 +29,9 @@ void portaApp::setup()
 		currentVideoDirectory.listDir();
 		currentVideoDirectory.sort();
 		vector<ofFile> files = currentVideoDirectory.getFiles();
-		if (currentVideoDirectory.getFiles.size()>0) 
+		if (files.size()>0) 
 		{
-            moviefile = files[0].path();
+            movieFile = files[0].path();
 			settings.videoPath = files[0].path();
 			settings.useHDMIForAudio = true;	//default true
 			settings.enableLooping = false;		//default true
