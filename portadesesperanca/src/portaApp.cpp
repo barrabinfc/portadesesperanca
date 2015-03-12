@@ -5,7 +5,7 @@ void portaApp::onVideoEnd(ofxOMXPlayerListenerEventData& e)
 {
 	ofLogVerbose(__func__) << " RECEIVED";
     //omxPlayer.restartMovie();
-    omxPlayer.pause();
+    omxPlayer.setPause(true);
 }
 
 void portaApp::onCharacterReceived(KeyListenerEventData& e)
@@ -28,8 +28,8 @@ void portaApp::setup()
 	{
 		currentVideoDirectory.listDir();
 		currentVideoDirectory.sort();
-		files = currentVideoDirectory.getFiles();
-		if (files.size()>0) 
+		vector<ofFiles> files = currentVideoDirectory.getFiles();
+		if (currentVideoDirectory.getFiles.size()>0) 
 		{
             moviefile = files[0].path();
 			settings.videoPath = files[0].path();
