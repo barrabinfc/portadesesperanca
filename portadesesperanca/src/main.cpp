@@ -1,5 +1,5 @@
 #include "ofMain.h"
-#include "testApp.h"
+#include "portaApp.h"
 #include "ofGLProgrammableRenderer.h"
 
 int main()
