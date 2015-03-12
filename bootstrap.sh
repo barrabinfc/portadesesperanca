@@ -13,13 +13,13 @@ then
   exit 1
 fi
 
-apt-get update
-apt-get install -qq -y git make curl software-properties-common man-db help2man
+#apt-get update
+#apt-get install -qq -y git make curl software-properties-common man-db help2man
 
 cd /home/pi
 su - pi
-test -d portadesesperanca || git clone $PORTA_REPO
-cd portadesesperanca
+test -d porta || git clone $PORTA_REPO porta
+cd porta
 git fetch origin
 
 if [[ -n $PORTA_BRANCH ]]; then
@@ -31,4 +31,4 @@ fi
 sudo make install
 
 echo
-echo "Almost done! Now copy the movies to ~/portadesesperanca/movies/"
+echo "Almost done! Now copy the movies to ~/porta/movies/"
