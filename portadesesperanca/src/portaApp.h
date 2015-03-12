@@ -14,8 +14,6 @@ class portaApp : public ofBaseApp, public ofxOMXPlayerListener, public KeyListen
 		void update();
 		void draw();
 	
-	    ofxOMXPlayer omxPlayer;
-
 		void keyPressed(int key);
 		ofxOMXPlayer omxPlayer;
 	
