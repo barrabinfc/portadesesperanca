@@ -15,6 +15,10 @@ In reality, it's just a RaspberryPI playing a HD video when a sensor activates. 
 
 # Software.
 
+[![Stories in Ready](https://badge.waffle.io/barrabinfc/portadesesperanca.svg?label=ready&title=Ready)](http://waffle.io/barrabinfc/portadesesperanca)
+
+[![Stories in Progress](https://badge.waffle.io/barrabinfc/portadesesperanca.svg?label=progress&title=In%20Progress)](http://waffle.io/barrabinfc/portadesesperanca)
+
 
 ### Installing
 
