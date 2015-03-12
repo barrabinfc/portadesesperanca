@@ -1,23 +1,20 @@
-#float door
+# Portal da Desesperanssa. Kianssa esperanca.
 
- Para esse projeto, usamos um raspberry pi , conectado a uma TV e um sensor de on/off. 
+Let's create a magic portal to another place of the world! Teletransportation! Or so it seems, because this magic is a AD compaign..
+
+In reality, it's just a RaspberryPI playing a HD video when a sensor activates. In our case, the sensor is the door opening and closing.
+
+## Hardware
   
-	- Raspberry PI Modal A+ + Power.
-  	- 3.5mm P10 audio cable. 
+	- Raspberry PI Modal B+ + Power.
   	- HDMI cable.
   	- TV Led Model Xxxx 
   	- Enclosing Box
 	- Sensor Reed Switch 
-	- 1 USB Stick c/ os videos.
 	
 
 # Software.
 
-### needs  	
-
-1. Modo kiosk. Turn-it-on and play.
-2. Quando o sensor ativar, `play video`.
-3. Quando desativar, `goto start`.
 
 ### Installing
 
@@ -27,13 +24,17 @@ Run this command with `pi` user
 
 This will update and install the necessary software to run.
 
-afterwards, restart your pi or run `portadesesperanca` on the command line.
+        Afterwards...
 
+Put your movies on /home/pi/porta/movies
 
-## Quantidades
+        Afterwards....run $
 
-6 kits
+    `~/porta/scripts/porta` on the command line.
+
 
 # References
 
 1. [Raspberry]( http://www.raspberrypi.org/documentation/hardware/raspberrypi/models/README.md)
+2. [Openframeworks] (http://openframeworks.org)
+3. [ofxOMXPlayer] ( )
