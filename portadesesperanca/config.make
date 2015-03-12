@@ -10,7 +10,7 @@ MAKEFILE_DEBUG = 1
 #   The location of your root openFrameworks installation
 #       (default) OF_ROOT = ../../.. 
 ################################################################################
-# OF_ROOT = ../../..
+OF_ROOT = ../../../..
 
 ################################################################################
 # App Name
@@ -51,7 +51,7 @@ MAKEFILE_DEBUG = 1
 #   Note: Leave a leading space when adding list items with the += operator
 ################################################################################
 # 
-OFXOMXPLAYER_PATH = $(PROJECT_ROOT)/../ofxAddons/ofxOMXPlayer
+OFXOMXPLAYER_PATH = $(PROJECT_ROOT)/../addons/ofxOMXPlayer
 PROJECT_EXTERNAL_SOURCE_PATHS = $(OFXOMXPLAYER_PATH)/src
 #PROJECT_EXTERNAL_SOURCE_PATHS +=  $(OFXOMXPLAYER_PATH)/src
 
