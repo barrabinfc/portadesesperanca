@@ -20,7 +20,6 @@ class portaApp : public ofBaseApp, public ofxOMXPlayerListener, public KeyListen
 		void onVideoEnd(ofxOMXPlayerListenerEventData& e);
 		void onVideoLoop(ofxOMXPlayerListenerEventData& e){ /*empty*/ };
 
-		
 		ofFile movieFile;
 	
 		void onCharacterReceived(KeyListenerEventData& e);
