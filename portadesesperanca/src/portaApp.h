@@ -4,7 +4,7 @@
 #include "ofxOMXPlayer.h"
 #include "TerminalListener.h"
 
-#define PORTA_MOVIES_PATH="/home/pi/porta/movies"
+#define PORTA_MOVIES_PATH "/home/pi/porta/movies"
 
 class portaApp : public ofBaseApp, public ofxOMXPlayerListener, public KeyListener {
 
