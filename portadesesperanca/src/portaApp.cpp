@@ -49,11 +49,29 @@ void portaApp::setup()
 
     omxPlayer.setup(settings);
     consoleListener.setup(this);
+
+    // Wiring PI
+	wiringPiSetupGpio();    
+	pinMode( SENSOR_PORT, INPUT );
+	pullUpDnControl( SENSOR_PORT, PUD_UP );
 }
 
 //--------------------------------------------------------------
 void portaApp::update() {
 	//update background tasks here
+
+	// read sensor.
+	bool door_read = (bool) digitalRead( SENSOR_PORT );
+
+	// DOOR OPENED
+	if(!is_door_open and (door_read == TRUE)){
+    	ofLog(OF_LOG_VERBOSE, "door opened!");
+		omxPlayer.restartMovie();
+	// DOOR CLOSED
+	}else if(is_door_open and (door_read == FALSE)){]
+    	ofLog(OF_LOG_VERBOSE, "door closed!");
+		omxPlayer.stop();
+	}
 }
 
 //--------------------------------------------------------------
@@ -62,7 +80,9 @@ void portaApp::draw(){
     //
     omxPlayer.draw(0, 0, ofGetWidth(), ofGetHeight());
 	
-	ofDrawBitmapStringHighlight(omxPlayer.getInfo(), 60, 60, ofColor(ofColor::black, 90), ofColor::yellow);
+	if(show_info){
+			ofDrawBitmapStringHighlight(omxPlayer.getInfo(), 60, 60, ofColor(ofColor::black, 90), ofColor::yellow);
+	}
 
 }
 
@@ -74,6 +94,9 @@ void portaApp::keyPressed(int key){
     }
     if (key == 'r'){
         omxPlayer.restartMovie();
+    }
+    if (key == 'i'){
+		show_info = !show_info;
     }
 }
 

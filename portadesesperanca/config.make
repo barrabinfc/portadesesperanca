@@ -101,13 +101,18 @@ CODEC_STATIC=$(FFMPEG_LIBS)/libavcodec.a
 SCALE_STATIC=$(FFMPEG_LIBS)/libswscale.a
 UTIL_STATIC=$(FFMPEG_LIBS)/libavutil.a
 
+# Wiring PI
+# http://openframeworks.cc/setup/raspberrypi/Raspberry-Pi-Using-the-GPIO-pins-with-Wiring-Pi-and-openFrameworks.html
+WIRING_LDFLAGS=-Wl,-rpath=./libs
+WIRING_LDFLAGS += -lwiringPi
+
 #unused but available
 FILTER_STATIC=$(FFMPEG_LIBS)/libavfilter.a
 POSTPROC_STATIC=$(FFMPEG_LIBS)/libpostproc.a
 DEVICE_STATIC=$(FFMPEG_LIBS)/libavdevice.a
 RESAMPLE_STATIC=$(FFMPEG_LIBS)/libswresample.a
 
-PROJECT_LDFLAGS=-L$(FFMPEG_LIBS) $(FORMAT_STATIC) $(CODEC_STATIC) $(SCALE_STATIC) $(UTIL_STATIC) $(RESAMPLE_STATIC) $(FILTER_STATIC) -lm
+PROJECT_LDFLAGS=-L$(FFMPEG_LIBS) $(FORMAT_STATIC) $(CODEC_STATIC) $(SCALE_STATIC) $(UTIL_STATIC) $(RESAMPLE_STATIC) $(FILTER_STATIC) $(WIRING_LDFLAGS) -lm
 
 ################################################################################
 # PROJECT DEFINES
