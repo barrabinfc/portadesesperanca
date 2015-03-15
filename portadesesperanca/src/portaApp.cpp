@@ -19,6 +19,8 @@ void portaApp::onCharacterReceived(KeyListenerEventData& e)
 void portaApp::setup()
 {
 	ofBackground(ofColor::black);
+	ofHideCursor()
+
 	//ofSetLogLevel(OF_LOG_VERBOSE);
 	ofSetLogLevel("ofThread", OF_LOG_ERROR);
 	
@@ -31,7 +33,7 @@ void portaApp::setup()
 		vector<ofFile> files = currentVideoDirectory.getFiles();
 		if (files.size()>0) 
 		{
-            movieFile = files[0].path();
+			movieFile = files[0].path();
 			settings.videoPath = files[0].path();
 			settings.useHDMIForAudio = true;	//default true
 			settings.enableLooping = false;		//default true
@@ -66,11 +68,12 @@ void portaApp::update() {
 	// DOOR OPENED
 	if(!is_door_open and (door_read == TRUE)){
     	ofLog(OF_LOG_VERBOSE, "door opened!");
-		omxPlayer.restartMovie();
+		omxPlayer.setPaused(false);
 	// DOOR CLOSED
-	}else if(is_door_open and (door_read == FALSE)){]
+	}else if(is_door_open and (door_read == FALSE)){
     	ofLog(OF_LOG_VERBOSE, "door closed!");
-		omxPlayer.stop();
+		omxPlayer.restartMovie();
+		omxPlayer.setPaused(true);
 	}
 }
 
