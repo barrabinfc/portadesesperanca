@@ -2,6 +2,9 @@
 
 all:
 	# type make install to install
+	#
+run:
+	sudo portadesesperanca/bin/portadesesperanca
 
 install: auto_launch
 	echo "--> Copying porta binary"

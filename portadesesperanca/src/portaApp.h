@@ -7,14 +7,15 @@
 
 #define PORTA_MOVIES_PATH "/home/pi/porta/movies"
 #define INTRO_IMAGE       "/home/pi/porta/img/intro.png"
-#define SENSOR_PORT 36
+#define SENSOR_PORT        16  /* pin 36 */
+
 
 #define MODE_INTRO 0
 #define MODE_DOOR_CLOSED 1
 #define MODE_DOOR_OPEN 2
 #define MODE_DOOR_VIDEOPLAYED 3
 
-#define INTRO_TIMEOUT 3000
+#define INTRO_TIMEOUT 3.0f
 
 class portaApp : public ofBaseApp, public ofxOMXPlayerListener, public KeyListener {
 
@@ -42,8 +43,8 @@ class portaApp : public ofBaseApp, public ofxOMXPlayerListener, public KeyListen
 		void update();
 		void draw();
 
-        void doorOpened();
-        void doorClosed();
+        void portaOpened();
+        void portaClosed();
 
 		void keyPressed(int key);
 
