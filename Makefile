@@ -3,8 +3,9 @@
 all:
 	# type make install to install
 
-install: dependencies
-	echo "installed"
+install: auto_launch
+	echo "--> Copying porta binary"
+	cp -R portadesesperanca/bin/* /home/pi/porta/bin
 
 dependencies:
 	echo "--> Installing python-pip"
@@ -12,5 +13,5 @@ dependencies:
 	sudo pip install RPi.GPIO
 
 auto_launch:
-	echo "--> Adding portadesesperanca to ~/.bashrc"
-	echo '/home/pi/portadesesperanca/launcher.sh' >> ~/.bashrc
+	echo "--> Adding portadesesperanca launch script"
+	cp scripts/launcher.sh /home/pi/porta/scripts/
