@@ -15,7 +15,7 @@
 #define MODE_DOOR_OPEN 2
 #define MODE_DOOR_VIDEOPLAYED 3
 
-#define INTRO_TIMEOUT 3.0f
+#define INTRO_TIMEOUT 3000
 
 class portaApp : public ofBaseApp, public ofxOMXPlayerListener, public KeyListener {
 
@@ -23,7 +23,7 @@ class portaApp : public ofBaseApp, public ofxOMXPlayerListener, public KeyListen
 		portaApp() :
 			sensor_port(SENSOR_PORT),
 			is_door_open(false),
-			show_info(false),
+			show_info(true),
             mode( MODE_INTRO )
 		{};
 
@@ -45,6 +45,7 @@ class portaApp : public ofBaseApp, public ofxOMXPlayerListener, public KeyListen
 
         void portaOpened();
         void portaClosed();
+        void onPortaChange();
 
 		void keyPressed(int key);
 

@@ -5,11 +5,12 @@ void portaApp::setup()
 {
 	ofBackground(ofColor::black);
 	ofHideCursor();
+    ofSetVerticalSync(false);
 
 	//ofSetLogLevel(OF_LOG_VERBOSE);
 	ofSetLogLevel("ofThread", OF_LOG_ERROR);
-    ofSetFrameRate(60);
-    ofSetFullscreen(true);
+    ofSetFrameRate(30);
+    //piHiPri(20);
 
 	//this will let us just grab a video without recompiling
 	ofDirectory currentVideoDirectory(ofToDataPath(PORTA_MOVIES_PATH, true));
@@ -23,18 +24,15 @@ void portaApp::setup()
 			movieFile = files[0].path();
 			settings.videoPath = files[0].path();
 			settings.useHDMIForAudio = true;	//default true
-			settings.enableLooping = true;		//default true
-			settings.enableTexture = true;		//default true
+			settings.enableLooping = false;		//default true
+			settings.enableTexture = false;		//default true
+			settings.enableAudio = true;
 			settings.listener = this;			//this app extends ofxOMXPlayerListener so it will receive events ;
 		}
 	}
 
+    ofLogVerbose(__func__) << "loaded video " << movieFile.path();
 
-    if(!settings.enableTexture)
-    {
-        // adjust width,height x,y, if necessary
-        //settings.displayRect.width = ofget;
-    }
     omxPlayer.setup(settings);
     omxPlayer.setPaused(true);
     consoleListener.setup(this);
@@ -46,6 +44,8 @@ void portaApp::setup()
 	wiringPiSetupGpio();
 	pinMode( SENSOR_PORT, INPUT );
 	pullUpDnControl( SENSOR_PORT, PUD_UP );
+
+    //wiringPiISR( SENSOR_PORT, INT_EDGE_BOTH , &portaApp::onPortaChange );
 }
 
 //------------------------------------------------------ --------
@@ -53,6 +53,10 @@ void portaApp::update() {
 	//update background tasks here
     time = ofGetElapsedTimef();
 
+    onPortaChange();
+}
+
+void portaApp::onPortaChange(){
 	// read sensor.
 	bool door_read = (bool) digitalRead( SENSOR_PORT );
 
@@ -66,23 +70,25 @@ void portaApp::update() {
 }
 
 void portaApp::portaOpened(){
+    omxPlayer.setPaused(false);
+
     mode = MODE_DOOR_OPEN;
     is_door_open = true;
     ofLog(OF_LOG_VERBOSE, "door opened!");
-    omxPlayer.setPaused(false);
 }
 
 void portaApp::portaClosed(){
+    omxPlayer.setPaused(true);
+    omxPlayer.seekToTimeInSeconds(0);
+
     mode = MODE_DOOR_CLOSED;
     ofLog(OF_LOG_VERBOSE, "door closed!");
     is_door_open = false;
-    omxPlayer.setPaused(true);
-    omxPlayer.restartMovie();
-    omxPlayer.setPaused(true);
 }
 
 //--------------------------------------------------------------
 void portaApp::draw(){
+
 
     //ofDrawBitmapStringHighlight( ofToString(time), 60, 60, ofColor(ofColor::black, 90), ofColor::yellow);
     if(mode == MODE_INTRO){
@@ -92,12 +98,21 @@ void portaApp::draw(){
             mode = MODE_DOOR_CLOSED;
         }
     }else if(mode == MODE_DOOR_OPEN){
-        //not used as the non-textured player takes over the screen
-        omxPlayer.draw(0, 0, ofGetWidth(), ofGetHeight());
+        /*
+        if(omxPlayer.isPlaying() && omxPlayer.isFrameNew()){
+            omxPlayer.draw(0, 0, ofGetWidth(), ofGetHeight());
+        }
+        */
 
+        /*
         if(show_info){
                 ofDrawBitmapStringHighlight(omxPlayer.getInfo(), 60, 60, ofColor(ofColor::black, 90), ofColor::yellow);
         }
+        */
+
+    }else if(mode == MODE_DOOR_CLOSED){
+
+        // just wait...
     }
 }
 

@@ -18,7 +18,8 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 
-su -l root -c /home/pi/porta/scripts/launcher.sh
+/home/pi/porta/scripts/launcher.sh
+
 #su -l pi -c startx
 #sudo /home/pi/porta/scripts/launcher.sh
 

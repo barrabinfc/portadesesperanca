@@ -5,7 +5,7 @@
 int main()
 {
 	ofSetLogLevel(OF_LOG_VERBOSE);
-	ofSetCurrentRenderer(ofGLProgrammableRenderer::TYPE);
-	ofSetupOpenGL(1280, 720, OF_WINDOW);
+	//ofSetCurrentRenderer(ofGLProgrammableRenderer::TYPE);
+	ofSetupOpenGL(1080, 1920, OF_FULLSCREEN);
 	ofRunApp( new portaApp());
 }
