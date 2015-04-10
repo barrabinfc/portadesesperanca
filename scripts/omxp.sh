@@ -2,6 +2,7 @@
 
 export PATH=$PATH:$(pwd)/scripts
 
-MOVIE=/home/pi/porta/movies/kinoplex.mp4
+MOVIE=/home/pi/porta/movies/3x/vlmadalena3x.mov
 
-omxplayer --loop -I --blank --pos 0 -o hdmi $MOVIE &
+NOREFRESH=1 omxplayer --no-osd --orientation 90 -z -I --blank --loop --no-keys -o hdmi --genlog $MOVIE &
+#omxplayer --refresh -I --blank --loop --no-keys -o hdmi --genlog $MOVIE &

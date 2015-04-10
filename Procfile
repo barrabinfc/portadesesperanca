@@ -9,7 +9,7 @@ process :example_worker do
   # Define the action to be carried out when this process should start
   start do
     system("#{root}/scripts/omxp.sh &")
-    system("sleep 2; #{root}/scripts/genius.sh &")
+    system("sleep 1; #{root}/scripts/genius.sh &")
   end
 
   # Define the action to be carried out when this process should stop

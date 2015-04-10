@@ -12,7 +12,7 @@ gpio mode $PIN up
 
 gpio readall
 
-export RASP_ID="kinoplex"
+export RASP_ID="kinoplex bkp"
 echo "LAUNCHING: $RASP_ID $(date '+%d/%m/%y %H:%M:%S')" >> /home/pi/porta/doormetrics.txt
 
 last_door_status='1';
@@ -24,11 +24,19 @@ while [ true ]; do
         continue;
     else
         if [ $door_open == '0' ];then
-         dbus.sh setposition 0; dbus.sh pause;
+         { 
+            dbus.sh setposition 0; sleep 0.01; dbus.sh pause;
+         } || { 
+            pkill -9 omxplayer;
+         }
          echo "$(date '+%d/%m/%y %H:%M:%S') DOOR_CLOSED" >> /home/pi/porta/doormetrics.txt
          echo "porta FECHADA!";
         else
-         dbus.sh pause;
+         { 
+             dbus.sh pause;
+         } || { 
+            pkill -9 omxplayer;
+         }
          echo "$(date '+%d/%m/%y %H:%M:%S') DOOR_OPENED" >> /home/pi/porta/doormetrics.txt
          echo "porta ABERTA";
         fi

@@ -3,7 +3,7 @@
 
 # uncomment this if your display has a black border of unused pixels visible
 # and your display can output without overscan
-#disable_overscan=1
+disable_overscan=1
 
 # uncomment the following to adjust overscan. Use positive numbers if console
 # goes off screen, and negative if there is too much border
@@ -54,8 +54,8 @@ gpu_mem=128
 # HDMI output mode
 hdmi_drive=2 			# Sound;video over HDMI
 hdmi_group=1 			# CEA Mode
-hdmi_mode=16 			# 1920X1080
-display_rotate=1        # 0 = normal, 1 = 90
+hdmi_mode=5 			# 1920X1080 60hz
+display_rotate=0        # 0 = normal, 1 = 90
 
 
 # start screen
