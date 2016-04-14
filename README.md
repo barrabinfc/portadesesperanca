@@ -1,8 +1,6 @@
-# Portal da Desesperanssa. Kianssa esperanca.
+# Iberia Magic Doors Ads
 
-Let's create a magic portal to another place of the world! Teletransportation! Or so it seems, because this magic is a AD compaign..
-
-In reality, it's just a RaspberryPI playing a HD video when a sensor activates. In our case, the sensor is the door opening and closing.
+Let's create a magic portal to another place of the world! Teletransportation! Or so it seems, because this magic is a AD compaign for iberia..
 
 ## Hardware
   
